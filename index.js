@@ -95,10 +95,11 @@ app.post("/resume/create", upload.single("headshotImage"), async (req, res) => {
 
 
     //👇🏻 group the values into an object
+    const fullUrl = req.protocol + '://' + req.get('host');
     const newEntry = {
         id: generateID(),
         fullName,
-        image_url: `http://168.168.2.71:4000/uploads/${req.file.filename}`,
+        image_url: `${fullUrl}/uploads/${req.file.filename}`,
         currentPosition,
         currentLength,
         currentTechnologies,
